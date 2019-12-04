@@ -71,9 +71,10 @@
     }
 
           foreach ($data as $key => $value) {
+            //print_r($value);
             echo '<tr>
                   <td>'.$value['number'].'</td>
-                  <td><span style="color:#0276d2" title="'.$value['hash'].'">'.substr($value['hash'],30).'...</span></td>
+                  <td><a class="openBtn" data-toggle="modal" data-target="#myModal"><span style="color:#0276d2;text-decoration:underline;cursor:pointer" title="'.$value['hash'].'">'.substr($value['hash'],30).'...</span></a></td>
                   <td>'.relativeTime($value['timestamp']/1000000000).'</td>
                   <td>'.$value['gas'].'</td>
                   <td>'.$value['time'].'</td>                
@@ -87,12 +88,44 @@
   </div>
   <div style="padding:30px;"></div>
 </div>
-<script   src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="  crossorigin="anonymous"></script><script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+<div class="modal" id="myModal" style="font-family: 'Poppins'">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title" style="font-size: 14px;">Modal Heading</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="font-size: 12px;">
+        <img src="jui.gif" style="width: 90%">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
     $('#example').DataTable();
-} );
+  } );
+</script>
+
+
+
+<script>
+$('.openBtn').on('click',function(){
+    $('.modal-body').load('http://13.233.7.230:3003/api/dataManager/explorer',function(){
+        $('#myModal').modal({show:true});
+    });
+});
 </script>
 </body>
 </html>
