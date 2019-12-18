@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Transaction Scanner</title>
+  <title>Block Scanner</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -65,7 +65,7 @@
 </div>
 <div class="container" style="font-family: 'Poppins', sans-serif;background-color: #fff;box-shadow: 0px 0px 10px #eee;">
    <div style="padding:30px;">
-    <h3>Transaction Scanner</h3>
+    <h3>Block Scanner</h3>
     <hr/><div style="padding: 20px;"></div>
     <?php
       $data = file_get_contents("http://13.233.7.230:3003/api/dataManager/explorer");
@@ -77,7 +77,7 @@
         <tr>
           <th>Block No.</th>
           <th>Block Hash</th>
-          <th>Timestamp</th>
+          <th>Age</th>
           <th>Gas</th>
           <th>Time</th>
         </tr>
@@ -144,7 +144,7 @@
 
       <!-- Modal Header -->
       <div class="modal-header">
-        <h4 class="modal-title" style="font-size: 14px;">Transaction Details</h4>
+        <h4 class="modal-title" style="font-size: 14px;">Block Details</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
 

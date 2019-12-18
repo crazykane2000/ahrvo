@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Transaction Scanner</title>
+  <title>Transaction Radar Scanner</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -65,7 +65,7 @@
 </div>
 <div class="container" style="font-family: 'Poppins', sans-serif;background-color: #fff;box-shadow: 0px 0px 10px #eee;">
    <div style="padding:30px;">
-    <h3>Transaction Scanner</h3>
+    <h3>Transaction Radar Scanner</h3>
     <hr/><div style="padding: 20px;"></div>
     <?php
       $data = file_get_contents("http://13.233.7.230:3003/api/dataManager/get/transactionDetails?_txhash=".$_REQUEST['id']);
@@ -84,10 +84,10 @@
         <td><?php echo $data['result']['blockNumber']; ?></td>
       </tr>
 
-      <tr>
+      <!-- <tr>
         <td sty><b>contractAddress</b></td>
         <td><?php echo $data['result']['contractAddress']; ?></td>
-      </tr>
+      </tr> -->
 
       <tr>
         <td sty><b>cumulativeGasUsed</b></td>
@@ -104,10 +104,10 @@
         <td><?php echo $data['result']['gasUsed']; ?></td>
       </tr>
 
-      <tr>
+      <!-- <tr>
         <td sty><b>logsBloom</b></td>
         <td><div style="word-break: break-word"><?php echo $data['result']['logsBloom']; ?></div></td>
-      </tr>
+      </tr> -->
 
       <tr>
         <td sty><b>root</b></td>
@@ -124,10 +124,10 @@
         <td><?php echo $data['result']['transactionHash']; ?></td>
       </tr>
 
-      <tr>
+      <!-- <tr>
         <td sty><b>transactionIndex</b></td>
         <td><?php echo $data['result']['transactionIndex']; ?></td>
-      </tr>
+      </tr> -->
     </table>
   </div>
   <div style="padding:30px;"></div>
