@@ -68,71 +68,66 @@
     <h3>Transaction Scanner</h3>
     <hr/><div style="padding: 20px;"></div>
     <?php
-      $data = file_get_contents("http://13.233.7.230:3003/api/dataManager/explorer");
+      $data = file_get_contents("http://13.233.7.230:3003/api/dataManager/get/transactionDetails?_txhash=".$_REQUEST['id']);
       $data = json_decode($data,true);
-      //print_r($data);
+     // print_r($data);
        ?>
-    <table class="table table-striped" style="font-size: 13px" id="example">
-      <thead>
-        <tr>
-          <th>Block No.</th>
-          <th>Block Hash</th>
-          <th>Timestamp</th>
-          <th>Gas</th>
-          <th>Time</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php 
-        function relativeTime($time) {
+    <table class="table table-striped" style="font-size: 13px" >
 
-        $d[0] = array(1,"Sec");
-        $d[1] = array(60,"Min");
-        $d[2] = array(3600,"hr");
-        $d[3] = array(86400,"Day");
-        $d[4] = array(604800,"W");
-        $d[5] = array(2592000,"Mon");
-        $d[6] = array(31104000,"Yr");
+      <tr>
+        <td sty><b>blockHash</b></td>
+        <td><?php echo $data['result']['blockHash']; ?></td>
+      </tr>
 
-        $w = array();
+      <tr>
+        <td sty><b>blockNumber</b></td>
+        <td><?php echo $data['result']['blockNumber']; ?></td>
+      </tr>
 
-        $return = "";
-        $now = time();
-        $diff = ($now-$time);
-        $secondsLeft = $diff;
+      <tr>
+        <td sty><b>contractAddress</b></td>
+        <td><?php echo $data['result']['contractAddress']; ?></td>
+      </tr>
 
-        for($i=6;$i>-1;$i--)
-        {
-             $w[$i] = intval($secondsLeft/$d[$i][0]);
-             $secondsLeft -= ($w[$i]*$d[$i][0]);
-             if($w[$i]!=0)
-             {
-                $return.= abs($w[$i]) . " " . $d[$i][1] . (($w[$i]>1)?'s':'') ." ";
-             }
+      <tr>
+        <td sty><b>cumulativeGasUsed</b></td>
+        <td><?php echo $data['result']['cumulativeGasUsed']; ?></td>
+      </tr>
 
-        }
+      <tr>
+        <td sty><b>from</b></td>
+        <td><?php echo $data['result']['from']; ?></td>
+      </tr>
 
-        $return .= ($diff>0)?"ago":"left";
-        return $return;
-    }
-          rsort($data);
-          foreach ($data as $key => $value) {
+      <tr>
+        <td sty><b>gasUsed</b></td>
+        <td><?php echo $data['result']['gasUsed']; ?></td>
+      </tr>
 
-            $time = $value['time'];
-            $time = explode(".", $time);
-            $time = str_replace("T", " ", $time[0]);
-            echo '<tr>
-                  <td>'.$value['number'].'</td>
-                  <td><a class="openBtn" data-id="'.$value['number'].'" data-toggle="modal" data-target="#myModal"><span style="color:#0276d2;text-decoration:underline;cursor:pointer" title="'.$value['blockHash'].'">'.substr($value['blockHash'],30).'...</span></a></td>
-                  <td>'.relativeTime($value['timestamp']/1000000000).'</td>
-                  <td>'.$value['gasUsed'].'</td>
-                  <td>'.$time.'</td>                
-                </tr>';
-          }
-         ?>
-        
-       
-      </tbody>
+      <tr>
+        <td sty><b>logsBloom</b></td>
+        <td><div style="word-break: break-word"><?php echo $data['result']['logsBloom']; ?></div></td>
+      </tr>
+
+      <tr>
+        <td sty><b>root</b></td>
+        <td><?php echo $data['result']['root']; ?></td>
+      </tr>
+
+      <tr>
+        <td sty><b>to</b></td>
+        <td><?php echo $data['result']['to']; ?></td>
+      </tr>
+
+      <tr>
+        <td sty><b>transactionHash</b></td>
+        <td><?php echo $data['result']['transactionHash']; ?></td>
+      </tr>
+
+      <tr>
+        <td sty><b>transactionIndex</b></td>
+        <td><?php echo $data['result']['transactionIndex']; ?></td>
+      </tr>
     </table>
   </div>
   <div style="padding:30px;"></div>
