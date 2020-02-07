@@ -105,11 +105,7 @@
         <h6>Block Scanner</h6>
       </div>
       <div class="col-sm-6">
-<<<<<<< HEAD
-        <a href="" class="btn btn-success btn-sm" style="float: right;">Show All Blocks</a>
-=======
         <a href="show_all_blocks.php" class="btn btn-success btn-sm" style="float: right;">Show All Blocks</a>
->>>>>>> e9003269f7a1ca2717aafdbc92bfbfd482cd4d56
       </div>
     </div>
     
@@ -153,20 +149,12 @@
           if ($j>4) {
               continue;
             }
-<<<<<<< HEAD
-            $time = 
-=======
             $time = "";
->>>>>>> e9003269f7a1ca2717aafdbc92bfbfd482cd4d56
             $count = count($value['transactions']);
           echo '<div class="col-sm-3">
                   <div style="padding: 10px;border:solid 1px #eee;border-radius: 4px;border-left: solid 4px #77b711;font-size: 12px;">
                     <div style="padding: 6px;">
-<<<<<<< HEAD
                       <h6>Block : '.$value['number'].'</h6>
-=======
-                      <a href="show_block.php?block_id='.$value['number'].'" style="color:#333"><h6>Block : '.$value['number'].'</h6></a>
->>>>>>> e9003269f7a1ca2717aafdbc92bfbfd482cd4d56
                     </div>
                     <div style="padding: 10px;background-color: #f5f5f5;font-family: arial;color: #888">
                       '.$count.' Transaction, '.relativeTime($value['timestamp']/1000000000).'
@@ -194,11 +182,7 @@
         <h6>Transactions</h6>
       </div>
       <div class="col-sm-6">
-<<<<<<< HEAD
-        <a href="" class="btn btn-success btn-sm" style="float: right;">Show All Transactions</a>
-=======
         <a href="show_all_tx.php" class="btn btn-success btn-sm" style="float: right;">Show All Transactions</a>
->>>>>>> e9003269f7a1ca2717aafdbc92bfbfd482cd4d56
       </div>
     </div>
     
@@ -225,11 +209,7 @@
                     <div class="row">
                       <div class="col-sm-9">
                         <div style="padding: 6px;">
-<<<<<<< HEAD
                           <h6 style="cursor:pointer;color:#007bff;word-break: break-all;font-size:15px;" class="openBtn" data-id="'.$value['number'].'" data-toggle="modal" data-target="#myModal">'.$value['blockHash'].'</h6>
-=======
-                          <a href="show_tx_2.php?id='.$data['result']['transactionHash'].'"><h6 style="cursor:pointer;color:#007bff;word-break: break-all;font-size:15px;" class="openBtn" data-id="'.$value['number'].'" >'.$value['blockHash'].'</h6></a>
->>>>>>> e9003269f7a1ca2717aafdbc92bfbfd482cd4d56
                         </div>
                         <div style="padding: 10px;background-color: #f5f5f5;font-family: arial;color: #888">
                           '.$data['result']['from'].' >  '.$data['result']['to'].'<br/>

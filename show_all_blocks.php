@@ -104,13 +104,7 @@
       <div class="col-sm-6">
         <h6>Block Scanner</h6>
       </div>
-      <div class="col-sm-6">
-<<<<<<< HEAD
-        <a href="" class="btn btn-success btn-sm" style="float: right;">Show All Blocks</a>
-=======
-        <a href="show_all_blocks.php" class="btn btn-success btn-sm" style="float: right;">Show All Blocks</a>
->>>>>>> e9003269f7a1ca2717aafdbc92bfbfd482cd4d56
-      </div>
+      
     </div>
     
     <div style="padding: 10px;"></div>
@@ -150,26 +144,28 @@
         $data = file_get_contents("http://13.233.7.230:3003/api/dataManager/explorer");
         $data = json_decode($data,true);
         foreach ($data as $key => $value) {
-          if ($j>4) {
-              continue;
-            }
-<<<<<<< HEAD
-            $time = 
-=======
+          //print_r($value);
+          
             $time = "";
->>>>>>> e9003269f7a1ca2717aafdbc92bfbfd482cd4d56
             $count = count($value['transactions']);
-          echo '<div class="col-sm-3">
-                  <div style="padding: 10px;border:solid 1px #eee;border-radius: 4px;border-left: solid 4px #77b711;font-size: 12px;">
-                    <div style="padding: 6px;">
-<<<<<<< HEAD
-                      <h6>Block : '.$value['number'].'</h6>
-=======
-                      <a href="show_block.php?block_id='.$value['number'].'" style="color:#333"><h6>Block : '.$value['number'].'</h6></a>
->>>>>>> e9003269f7a1ca2717aafdbc92bfbfd482cd4d56
-                    </div>
-                    <div style="padding: 10px;background-color: #f5f5f5;font-family: arial;color: #888">
-                      '.$count.' Transaction, '.relativeTime($value['timestamp']/1000000000).'
+          echo '<div class="col-sm-12">
+                  <div style="padding: 10px;border:solid 1px #eee;border-radius: 4px;border-left: solid 4px #77b711;font-size: 12px;margin-bottom:15px;">
+                    <div class="row">
+                      <div class="col-sm-2">
+                      <div style="padding: 6px;text-align:center;background-color:#f6ffe7;">
+                        <h6 style="font-weight:bold"> '.$value['number'].'</h6>
+                        Block No.
+                      </div>                    
+                      </div>
+                      <div class="col-sm-7">
+                        <h6 style="font-weight:bold;font-size:13px;"> '.$value['transactions'][0].'</h6>
+                         '.$value['gasUsed'].' Gas Used,<br/> <b>Difficulty : </b>'.$value['totalDifficulty'].'
+                      </div>
+                      <div class="col-sm-3">
+                        <div style="padding: 10px;font-family: arial;color: #888">
+                          '.$count.' Transaction,<br/> <b>Time : </b>'.relativeTime($value['timestamp']/1000000000).'
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>';
@@ -186,72 +182,6 @@
 
 <div class="container">
    <div style="padding: 20px;"></div>
-</div>
-<div class="container" style="font-family: 'Poppins', sans-serif;background-color: #fff;box-shadow: 0px 0px 10px #eee;">
-   <div style="padding:20px;">
-    <div class="row">
-      <div class="col-sm-6">
-        <h6>Transactions</h6>
-      </div>
-      <div class="col-sm-6">
-<<<<<<< HEAD
-        <a href="" class="btn btn-success btn-sm" style="float: right;">Show All Transactions</a>
-=======
-        <a href="show_all_tx.php" class="btn btn-success btn-sm" style="float: right;">Show All Transactions</a>
->>>>>>> e9003269f7a1ca2717aafdbc92bfbfd482cd4d56
-      </div>
-    </div>
-    
-    <div style="padding: 10px;"></div>
-
-    <div class="row">
-      <?php
-      $j=1;
-        
-        foreach ($data as $key => $value) {
-          if ($j>10) {
-              continue;
-            }
-            $time = 
-            $count = count($value['transactions']);
-            //print_r($value);
-
-            $data = file_get_contents("http://13.233.7.230:3003/api/dataManager/get/transactionDetails?_txhash=".$value['transactions'][0]);
-            $data = json_decode($data,true);
-            //print_r($data);
-
-          echo '<div class="col-sm-12" style="margin-top:13px;">
-                  <div style="padding: 10px;border:solid 1px #eee;border-radius: 4px;border-left: solid 4px #b1cffd;font-size: 12px;">
-                    <div class="row">
-                      <div class="col-sm-9">
-                        <div style="padding: 6px;">
-<<<<<<< HEAD
-                          <h6 style="cursor:pointer;color:#007bff;word-break: break-all;font-size:15px;" class="openBtn" data-id="'.$value['number'].'" data-toggle="modal" data-target="#myModal">'.$value['blockHash'].'</h6>
-=======
-                          <a href="show_tx_2.php?id='.$data['result']['transactionHash'].'"><h6 style="cursor:pointer;color:#007bff;word-break: break-all;font-size:15px;" class="openBtn" data-id="'.$value['number'].'" >'.$value['blockHash'].'</h6></a>
->>>>>>> e9003269f7a1ca2717aafdbc92bfbfd482cd4d56
-                        </div>
-                        <div style="padding: 10px;background-color: #f5f5f5;font-family: arial;color: #888">
-                          '.$data['result']['from'].' >  '.$data['result']['to'].'<br/>
-
-                          <b>Gas Used </b> : '.$data['result']['gasUsed'].', <b>Tx Fees </b> : '.$data['result']['cumulativeGasUsed'].'
-                        </div>
-                      </div>
-                      <div class="col-sm-3" style="text-align:right">
-                        <h6><span style="color:#999">Block # : </span>'.$value['number'].'</h6> '.relativeTime($value['timestamp']/1000000000).'
-                      </div>
-                    </div>
-                  </div>
-                </div>';
-                $j++;
-        }
-       ?>
-      
-    </div>
-    
-    
-  </div>
-  <div style="padding:30px;"></div>
 </div>
 
 <div class="modal" id="myModal" style="font-family: 'Poppins'">

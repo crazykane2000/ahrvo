@@ -61,9 +61,15 @@
   <?php include 'header.php'; ?>
 <div style="padding: 30px"></div>
 
+<<<<<<< HEAD
 <div class="container" style="font-family: 'Poppins', sans-serif;background-color: #fff;box-shadow: 0px 0px 10px #eee;">
    <div style="padding:30px;">
     <h3>Transaction Radar Scanner</h3>
+=======
+<div class="container" style="font-family: 'Poppins', sans-serif;background-color: #fff;box-shadow: 0px 0px 10px #eee;min-height: 700px;">
+   <div style="padding:30px;">
+    <h6>Transaction Radar Scanner</h6>
+>>>>>>> e9003269f7a1ca2717aafdbc92bfbfd482cd4d56
     <hr/><div style="padding: 20px;"></div>
     <?php
       $data = file_get_contents("http://13.233.7.230:3003/api/dataManager/get/transactionDetails?_txhash=".$_REQUEST['id']);
